@@ -40,7 +40,7 @@ class Busqueda : Fragment() {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                Log.d("TAG",newText)
+                Log.d("TAGG",newText)
                 return true
             }
         })
