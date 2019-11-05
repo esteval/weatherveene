@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- DIMENS PANTALLA PRINCIPAL-->
+    <dimen name="tamano_img_dias">55dp</dimen>
+    <dimen name="margenHorizontalDias">10dp</dimen>
+
+    <!-- DIMENS CARDVIEW-->
+
+    <dimen name="margenIzquierda">20dp</dimen>
+    <dimen name="margenArribaCiudad">30dp</dimen>
+    <dimen name="margenArribaTemp">15dp</dimen>
+    <dimen name="margenDerecha">10dp</dimen>
+    <dimen name="margenAbajoTemp">20dp</dimen>
+    <dimen name="margenEntreTemp">15dp</dimen>
+    <dimen name="margenTarjeta">8dp</dimen>
+    <dimen name="img_dias_mini">30dp</dimen>
+    <dimen name="margenHorizontalDiasMini">5dp</dimen>
+</resources>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">WeatherVeene</string>
+    <string name="prox_days_message">Proximos días</string>
+    <string name="descripcion_imagen">Imagen</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="icon_home">Home</string>
+    <string name="icon_search">Search</string>
+    <string name="icon_top">Top</string>
+    <string name="hint">Ciudad, país en 2 caracteres</string>
+</resources>

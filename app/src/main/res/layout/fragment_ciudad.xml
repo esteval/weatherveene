@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Ciudad">
+
+
+        <ImageView
+            android:id="@+id/imEstadoActual"
+            android:layout_width="179dp"
+            android:layout_height="186dp"
+            android:contentDescription="@string/descripcion_imagen"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.291"
+            app:srcCompat="@drawable/sol" />
+
+        <TextView
+            android:id="@+id/tvCiudad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Mexicali"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.058"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.071" />
+
+        <TextView
+            android:id="@+id/tvTempActual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/imEstadoActual"
+            app:layout_constraintHorizontal_bias="0.428"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvCiudad"
+            app:layout_constraintVertical_bias="0.09"
+            tools:text="19°" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/prox_days_message"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.037"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTempActual"
+            app:layout_constraintVertical_bias="0.127" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_marginTop="10dp">
+
+                <RelativeLayout
+                    android:id="@+id/dia1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/imaDia1"
+                            android:layout_width="@dimen/tamano_img_dias"
+                            android:layout_height="@dimen/tamano_img_dias"
+                            android:contentDescription="@string/descripcion_imagen"
+                            app:srcCompat="@drawable/sol" />
+
+                        <TextView
+                            android:id="@+id/tvDia1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/imaDia1"
+                            android:layout_centerHorizontal="true"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            tools:text="0°" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/dia2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/dia1">
+
+                        <ImageView
+                            android:id="@+id/imaDia2"
+                            android:layout_width="@dimen/tamano_img_dias"
+                            android:layout_height="@dimen/tamano_img_dias"
+                            android:contentDescription="@string/descripcion_imagen"
+                            android:layout_marginHorizontal="@dimen/margenHorizontalDias"
+                            app:srcCompat="@drawable/sol"
+                            tools:targetApi="o" />
+
+                        <TextView
+                            android:id="@+id/tvDia2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/imaDia2"
+                            android:layout_centerHorizontal="true"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            tools:text="25°" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/dia3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/dia2">
+
+                        <ImageView
+                            android:id="@+id/imaDia3"
+                            android:layout_width="@dimen/tamano_img_dias"
+                            android:layout_height="@dimen/tamano_img_dias"
+                            android:contentDescription="@string/descripcion_imagen"
+                            app:srcCompat="@drawable/sol" />
+
+                        <TextView
+                            android:id="@+id/tvDia3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/imaDia3"
+                            android:layout_centerHorizontal="true"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            tools:text="22°" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/dia4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/dia3">
+
+                        <ImageView
+                            android:id="@+id/imaDia4"
+                            android:layout_width="@dimen/tamano_img_dias"
+                            android:layout_height="@dimen/tamano_img_dias"
+                            android:contentDescription="@string/descripcion_imagen"
+                            android:layout_marginHorizontal="@dimen/margenHorizontalDias"
+                            app:srcCompat="@drawable/sol" />
+
+                        <TextView
+                            android:id="@+id/tvDia4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/imaDia4"
+                            android:layout_centerHorizontal="true"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            tools:text="9°" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/dia5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@id/dia4">
+
+                        <ImageView
+                            android:id="@+id/imaDia5"
+                            android:layout_width="@dimen/tamano_img_dias"
+                            android:layout_height="@dimen/tamano_img_dias"
+                            android:contentDescription="@string/descripcion_imagen"
+                            app:srcCompat="@drawable/sol" />
+
+                        <TextView
+                            android:id="@+id/tvDia5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/imaDia5"
+                            android:layout_centerHorizontal="true"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                            tools:text="20°" />
+                </RelativeLayout>
+        </RelativeLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
