@@ -20,32 +20,47 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 
 class Busqueda : Fragment() {
+    private lateinit var presenter: BusquedaPresenter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        presenter = BusquedaPresenter(this)
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_busqueda, container, false)
     }
-    var array = ArrayList<ClimaResponse>()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
         seachView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
             override fun onQueryTextSubmit(query: String?): Boolean {
                 recyclerView.layoutManager= LinearLayoutManager(context)
-                getDatos(query!!)
+                 presenter.searchWeather(query!!)
                 return true
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-                Log.d("TAGG",newText)
+                Log.d("TAGG",newText!!)
                 return true
             }
         })
+    }
+    val climas = ArrayList<ClimaTop>()
+    var adapter: Adaptador? = null
 
+    fun displayRecycler(item: ClimaTop){
+        if(isAdded){
+            climas.add(item)
+            if ( adapter != null ){
+                adapter!!.funcion(item)
+            }else{
+                adapter = Adaptador(climas)
+                recyclerView.adapter = adapter
 
+            }
+
+        }
     }
 
         fun toast(message:String){
@@ -53,16 +68,15 @@ class Busqueda : Fragment() {
 
         }
 
-    internal fun  getDatos(name:String ){
+   /* internal fun  getDatos(name:String ){
 
         val appid = "2e65127e909e178d0af311a81f39948c"
-        val cnt = "5"
         val metric= "metric"
         val retrofil = Retrofit.Builder().baseUrl("http://api.openweathermap.org/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-        val service = retrofil.create(ServicioClima::class.java)
-        val call = service.getDatosClima(name, metric,appid).also {
+        val service = retrofil.create(ParametrosQuery::class.java)
+        val call = service.getFutureWeather(name, metric,appid).also {
             it.enqueue(object : Callback<ClimaResponse> {
                 override fun onFailure(call: Call<ClimaResponse>?, t: Throwable?) {
                     Log.d("HTTPREQUESTMAL", "Algo mal: ")
@@ -86,12 +100,13 @@ class Busqueda : Fragment() {
                 }
             })
         }
+        Log.d("call", call.toString())
 
     }
     fun puente(climaRespuesta:ClimaResponse){
         array.add(climaRespuesta)
-        val adapter = Adaptador(array)
-        recyclerView.adapter = adapter
-    }
+        //val adapter = Adaptador(array)
+        //recyclerView.adapter = adapter
+    }*/
 }
 

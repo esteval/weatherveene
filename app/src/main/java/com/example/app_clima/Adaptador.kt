@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class Adaptador(var ciudad: ArrayList<ClimaResponse>): RecyclerView.Adapter<Adaptador.ViewHolder>() {
+class Adaptador(var ciudades: ArrayList<ClimaTop>): RecyclerView.Adapter<Adaptador.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.tarjeta_ciudad,parent,false)
@@ -17,16 +17,21 @@ class Adaptador(var ciudad: ArrayList<ClimaResponse>): RecyclerView.Adapter<Adap
     }
 
     override fun getItemCount(): Int {
-        return ciudad.size
+        return ciudades.size
     }
 
-    override fun onBindViewHolder(holder: Adaptador.ViewHolder, position: Int) {
-        holder.enlazarObjetos(ciudad[position])
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.enlazarObjetos(ciudades[position])
+    }
+
+    fun funcion(ciudad: ClimaTop){
+        ciudades.add(ciudad)
+        notifyItemInserted(ciudades.size-1)
     }
 
     class ViewHolder(vista:View): RecyclerView.ViewHolder(vista){
 
-        fun enlazarObjetos(ciudad:ClimaResponse){
+        fun enlazarObjetos(ciudad:ClimaTop){
             val name: TextView = itemView.findViewById(R.id.textCiudad)
             val textTemp: TextView = itemView.findViewById(R.id.textTemp)
             val textTempMin: TextView = itemView.findViewById(R.id.textTempMin)
@@ -42,45 +47,21 @@ class Adaptador(var ciudad: ArrayList<ClimaResponse>): RecyclerView.Adapter<Adap
             val imaDia4: ImageView = itemView.findViewById(R.id.imaDia4)
             val imaDia5: ImageView = itemView.findViewById(R.id.imaDia5)
 
-            name.text = ciudad.city.name
-            textTemp.text = ciudad.list[0].main.day.toInt().toString() + "°"
-            textTempMax.text = ciudad.list[0].main.max.toInt().toString() + "°"
-            textTempMin.text = ciudad.list[0].main.min.toInt().toString() + "°"
-            val indexNumbers: ArrayList<Int> = ArrayList()
-            for((index, value) in ciudad.list.withIndex()){
-                if(ciudad.list[index].date.contains("12:00:00")){
-                    indexNumbers.add(index)
-                }
-            }
-            for((index, value) in indexNumbers.withIndex()){
-                Log.d("INDEX", index.toString())
-                Log.d("VALUE", value.toString())
-                Log.d("NUBES", ciudad.list[value].weather[0].main)
-                when(index) {
-                    0 -> if (ciudad.list[value].weather[0].main != "Clear") {
-                        imaDia1.setImageResource(R.drawable.cloud)
-                    }
-                    1 -> if (ciudad.list[value].weather[0].main != "Clear") {
-                        imaDia2.setImageResource(R.drawable.cloud)
-                    }
-                    2 -> if (ciudad.list[value].weather[0].main != "Clear") {
-                        imaDia3.setImageResource(R.drawable.cloud)
-                    }
-                    3 -> if (ciudad.list[value].weather[0].main != "Clear") {
-                        imaDia4.setImageResource(R.drawable.cloud)
-                    }
-                    4 -> if (ciudad.list[value].weather[0].main != "Clear") {
-                        imaDia5.setImageResource(R.drawable.cloud)
-                    }
-                }
-            }
+            name.text = ciudad.name
+            textTemp.text = ciudad.temp
+            textTempMax.text = ciudad.tempMax
+            textTempMin.text = ciudad.tempMin
+            if(ciudad.sky1 != "Clear")imaDia1.setImageResource(R.drawable.cloud)
+            if(ciudad.sky2 != "Clear")imaDia2.setImageResource(R.drawable.cloud)
+            if(ciudad.sky3 != "Clear")imaDia3.setImageResource(R.drawable.cloud)
+            if(ciudad.sky4 != "Clear")imaDia4.setImageResource(R.drawable.cloud)
+            if(ciudad.sky5 != "Clear")imaDia5.setImageResource(R.drawable.cloud)
+            tempDia1.text = ciudad.temp1
+            tempDia2.text = ciudad.temp2
+            tempDia3.text = ciudad.temp3
+            tempDia4.text = ciudad.temp4
+            tempDia5.text = ciudad.temp5
 
-
-            tempDia1.text = ciudad.list[indexNumbers[0]].main.day.toInt().toString() + "°"
-            tempDia2.text = ciudad.list[indexNumbers[1]].main.day.toInt().toString() + "°"
-            tempDia3.text = ciudad.list[indexNumbers[2]].main.day.toInt().toString() + "°"
-            tempDia4.text = ciudad.list[indexNumbers[3]].main.day.toInt().toString() + "°"
-            tempDia5.text = ciudad.list[indexNumbers[4]].main.day.toInt().toString() + "°"
         }
     }
 }

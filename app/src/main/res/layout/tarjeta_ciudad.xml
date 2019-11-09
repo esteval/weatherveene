@@ -43,7 +43,6 @@
             android:layout_below="@+id/textTemp"
             android:layout_marginTop="@dimen/margenEntreTemp"
             android:layout_toStartOf="@+id/textTempMin"
-
             android:text="Min: " />
 
         <TextView

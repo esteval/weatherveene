@@ -20,6 +20,16 @@ data class Main(@SerializedName("temp") var day:Float,
 
 data class Weather(@SerializedName("main")var main:String)
 
+data class CurrentWeather(@SerializedName ("main")var temp:Temp,
+                          @SerializedName ("name")var name:String,
+                          @SerializedName("weather")var weather: ArrayList<Weather> = ArrayList())
+
+data class Temp(@SerializedName ("temp") var current: Float,
+                @SerializedName ("temp_min")var tempMin:Float,
+                @SerializedName ("temp_max")var tempMax:Float)
+
+
+
 
 
 
